@@ -12,16 +12,17 @@ def get_locations():
 @app.route('/predict_price',methods = ['POST'])
 def predict_price():
     location = request.form['location']
-    size= float(request.form['sqft'])
+    size= request.form['size']
     bhk= int(request.form['bhk'])
-    baths = int(request.form['bath'])
+    baths = int(request.form['baths'])
 
     response=jsonify({
-        'price ':utilities.get_prices(location,size,bhk,baths)
+        'price':utilities.get_prices(location,size,bhk,baths)
     })
     response.headers.add('Access-Control-Allow-Origin','*')
     return response
 if __name__ == "__main__":
-    print ("Starting python flask server")
+    print ("Starting python flask server...")
+    utilities.load_artifacts()
     app.run()
 
