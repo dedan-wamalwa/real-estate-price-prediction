@@ -37,5 +37,5 @@ def get_prices(location,size,bhk,bath):
     return price
 if __name__ == "__main__":
     load_artifacts()
-    # print(get_locations())
+    print(get_locations())
     print(get_prices("1st Phase JP Nagar",1200,3,3))
